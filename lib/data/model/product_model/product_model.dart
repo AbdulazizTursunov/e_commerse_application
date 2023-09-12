@@ -1,5 +1,6 @@
-import 'package:e_commerse_application/data/model/product_model/rating_model.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../rating.dart';
 
 class ProductModel {
   int id;
@@ -8,7 +9,7 @@ class ProductModel {
   String description;
   String category;
   String image;
-  RatingModel rating;
+  Rating rating;
 
   ProductModel({
     required this.id,
@@ -25,24 +26,42 @@ class ProductModel {
    return  ProductModel(
     id: json["id"]?? 0,
     title: json["title"] ?? '',
-    price: json["price"]?.toDouble() ?? 0.0,
+    price: json["price"] ?? 0 ,
     description: json["description"] ?? '',
     category: json["category"] ?? '',
     image: json["image"] ?? '',
     rating: json["rating"] != null
-        ? RatingModel.fromJson(json["rating"])
-        : RatingModel(
+        ? Rating.fromJson(json["rating"])
+        : Rating(
       rate: 0,
       count: 0,
     ),
   );}
 
   Map<String, dynamic> toJson() => {
+    "id": id,
     "title": title,
     "price": price,
     "description": description,
     "category": category,
     "image": image,
+
   };
+  ProductModel copyWith({
+    int? id,
+    String? title,
+    num? price,
+    String? description,
+    String? category,
+    String? image,
+  }) =>
+      ProductModel(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        price: price ?? this.price,
+        description: description ?? this.description,
+        category: category ?? this.category,
+        image: image ?? this.image, rating: rating,
+      );
 
 }

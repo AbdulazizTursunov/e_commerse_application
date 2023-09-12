@@ -1,4 +1,5 @@
 import 'package:e_commerse_application/data/local_db/local_db_model.dart';
+import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -36,33 +37,49 @@ class LocalDatabase {
 
     await db.execute('''
     CREATE TABLE ${LocalDbFields.productTable}(
-    ${LocalDbFields.id} $idType,
+    ${LocalDbFields.id} $intType,
     ${LocalDbFields.title} $textType,
-    ${LocalDbFields.price} $textType,
+    ${LocalDbFields.price} $realType,
     ${LocalDbFields.image} $textType,
     ${LocalDbFields.category} $textType,
     ${LocalDbFields.description} $textType
     );
     ''');
-  }
+    await db.execute('''
+    CREATE TABLE ${LocalDbFields.rate}(
+    ${LocalDbFields.id} $intType,
+    ${LocalDbFields.rate} $realType,
+    ${LocalDbFields.count} $intType
+    );
+    ''');
 
-  Future<ProductModelLocalDb> insertProduct(ProductModelLocalDb product) async {
+    await db.execute('''
+    CREATE TABLE ${LocalDbFields.favoriteTable}(
+      ${LocalDbFields.id} $intType,
+      ${LocalDbFields.title} $textType,
+      ${LocalDbFields.price} $realType,
+      ${LocalDbFields.image} $textType,
+      ${LocalDbFields.category} $textType,
+      ${LocalDbFields.description} $textType
+    );
+  ''');
+  }
+/// =========================== product ==========================///
+  Future<ProductModel> insertProduct(ProductModel product) async {
     final db = await instance.database;
     final int id =
-    await db.insert(LocalDbFields.productTable, product.toJson());
+        await db.insert(LocalDbFields.productTable, product.toJson());
+    await db.insert(LocalDbFields.rateTable,
+        product.rating.toJson()..addAll({"id": product.id}));
     return product.copyWith(id: id);
   }
-
-  Future<List<ProductModelLocalDb>> getAllProducts() async {
-    List<ProductModelLocalDb> allStudents = [];
+  Future<List<ProductModel>> getAllProducts() async {
+    List<ProductModel> allProduct = [];
     final db = await instance.database;
-    allStudents = (await db.query(LocalDbFields.productTable,))
-        .map((e) => ProductModelLocalDb.fromJson(e))
+    allProduct = (await db.query(LocalDbFields.productTable)).map((e) => ProductModel.fromJson(e))
         .toList();
-    return allStudents;
+    return allProduct;
   }
-
-
 
   deleteProductByID(int id) async {
     final db = await instance.database;
@@ -72,5 +89,31 @@ class LocalDatabase {
       whereArgs: [id],
     );
   }
+ ///======================= favorites ========================///
+  Future<ProductModel> insertFavorite(ProductModel product) async {
+    final db = await instance.database;
+    final int id = await db.insert(LocalDbFields.favoriteTable, product.toJson());
+    return product.copyWith(id: id);
+  }
+
+  Future<List<ProductModel>> getAllFavorites() async {
+    List<ProductModel> allProduct = [];
+    final db = await instance.database;
+    allProduct = (await db.query(LocalDbFields.favoriteTable)).map((e) => ProductModel.fromJson(e))
+        .toList();
+    return allProduct;
+  }
+
+  deleteFavoriteByID(int id) async {
+    final db = await instance.database;
+    db.delete(
+      LocalDbFields.favoriteTable,
+      where: "${LocalDbFields.id} = ?",
+      whereArgs: [id],
+    );
+  }
+
+
+
 
 }
