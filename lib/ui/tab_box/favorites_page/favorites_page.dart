@@ -1,3 +1,5 @@
+import 'package:e_commerse_application/service/api_repository/db_repositories.dart';
+import 'package:e_commerse_application/service/api_repository/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerse_application/data/model/product_model/product_model.dart';
@@ -14,7 +16,7 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
-  final bloc = FavoritesBloc();
+  final bloc = FavoritesBloc(productRepository: ProductRepository());
 
   @override
   void initState() {

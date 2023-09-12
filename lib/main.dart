@@ -1,3 +1,4 @@
+import 'package:e_commerse_application/service/api_repository/db_repositories.dart';
 import 'package:e_commerse_application/service/api_repository/repository.dart';
 import 'package:e_commerse_application/service/api_service/api_service.dart';
 import 'package:e_commerse_application/ui/route/routes.dart';
@@ -33,7 +34,7 @@ class MainApp extends StatelessWidget {
         return BlocProvider(
           create: (context) => CartBloc(),
           child: BlocProvider(
-            create: (context) => FavoritesBloc(),
+            create: (context) => FavoritesBloc( productRepository: ProductRepository()),
             child: BlocProvider(
               create: (context) => ProductsBloc(ProductsService()),
               child:const MaterialApp(

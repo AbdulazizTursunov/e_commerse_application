@@ -17,5 +17,16 @@ class ProductRepository {
   Future<void> deleteProduct(int productId) async =>
       await _localDatabase.deleteProductByID(productId);
 
+  Future<void> insertFavorites(ProductModel product) async =>
+      await _localDatabase.insertFavorite(product);
+
+
+  Future<List<ProductModel>> getAllFavorites() async {
+    print("ProductModel db getAll ok");
+    return  await _localDatabase.getAllFavorites();}
+
+
+  Future<void> deleteFavoritesById(int productId) async =>
+      await _localDatabase.deleteFavoriteByID(productId);
 
 }
