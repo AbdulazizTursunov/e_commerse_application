@@ -19,7 +19,7 @@ class _TabBoxState extends State<TabBox> {
   @override
   void initState() {
     screens.add(const ProductsPage());
-    screens.add(const FavoritesPage());
+    screens.add( FavoritesPage());
     screens.add(const BasketPage());
     super.initState();
   }
@@ -33,23 +33,31 @@ class _TabBoxState extends State<TabBox> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: screens[currentTabIndex],
+        body: IndexedStack(children: screens, index: currentTabIndex),
         bottomNavigationBar: ClipRRect(
           borderRadius: const BorderRadius.only(
             topRight: Radius.circular(24),
             topLeft: Radius.circular(24),
           ),
           child: BottomNavigationBar(
-            backgroundColor: AppColors.c060302,
+            backgroundColor: Colors.teal,
             items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'products',),
-              BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'favorite',),
-              BottomNavigationBarItem(icon: Icon(Icons.shopping_basket), label: 'basket',),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'products',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite),
+                label: 'favorite',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_basket),
+                label: 'basket',
+              ),
             ],
             currentIndex: currentTabIndex,
             onTap: _onItemTapped,
           ),
-        )
-    );
+        ));
   }
 }

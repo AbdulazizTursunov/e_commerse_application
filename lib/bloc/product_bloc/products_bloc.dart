@@ -21,11 +21,9 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     emit(ProductsLoadingState());
     try {
       final productsData = await productsService.getProductsData();
-
       var products = (productsData as List).map((e) => ProductModel.fromJson(e)).toList();
       emit(ProductsSuccessState(products: products));
     } catch (e) {
-      print(e);
       emit(ProductsErrorState(errortext: e.toString()));
     }
   }
@@ -34,15 +32,10 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   loadDataWithId(ProductsEvent productIdEvent, Emitter emit) async {
     emit(ProductsIdLoadingState());
     try {
-      print("a");
       final productsData = await productsService.getProductDetails(id:productIdEvent.id);
-      print("a1");
-      var product = ProductDetailsModel.fromJson(productsData as Map<String, dynamic>);
-
-      print("b");
+      var product = ProductDetailsModel.fromJson(productsData);
       emit(ProductsIdSuccessState(productDetailsModel: product));
     } catch (e) {
-      print(e);
       emit(ProductsErrorState(errortext: e.toString()));
     }
   }

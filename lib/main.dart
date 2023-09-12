@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'bloc/bloc_crud_local_db/local_db_bloc.dart';
+import 'bloc/favorites_bloc/favorite_bloc.dart';
 import 'bloc/product_bloc/products_bloc.dart';
 
 
@@ -17,32 +19,6 @@ void main() {
   ));
 }
 
-// class App extends StatelessWidget {
-//   const App({super.key, required this.apiService});
-//
-//   final ProductService apiService;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiRepositoryProvider(
-//       providers: [
-//         RepositoryProvider(
-//           create: (context) => ProductRepository(apiService: apiService),
-//         ),
-//       ],
-//       child: MultiBlocProvider(
-//         providers: [
-//           BlocProvider(
-//             create: (context) => ProductsBloc(
-//             )..add(GetAllProductsEvent()),
-//           ),
-//
-//         ],
-//         child: const MainApp(),
-//       ),
-//     );
-//   }
-// }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -54,13 +30,19 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          onGenerateRoute: AppRoutes.generateRoute,
-          debugShowCheckedModeBanner: false,
-          // theme: AppTheme.lightTheme,
-          // darkTheme: AppTheme.lightTheme,
-          // themeMode: ThemeMode.light,
-          home: const TabBox(),
+        return BlocProvider(
+          create: (context) => CartBloc(),
+          child: BlocProvider(
+            create: (context) => FavoritesBloc(),
+            child: BlocProvider(
+              create: (context) => ProductsBloc(ProductsService()),
+              child:const MaterialApp(
+                onGenerateRoute: AppRoutes.generateRoute,
+                debugShowCheckedModeBanner: false,
+                home: TabBox(),
+              ),
+            ),
+          ),
         );
       },
     );

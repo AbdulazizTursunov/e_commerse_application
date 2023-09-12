@@ -1,17 +1,26 @@
+import 'package:e_commerse_application/data/model/product_model/product_model.dart';
+import 'package:e_commerse_application/service/api_repository/db_repositories.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:like_button/like_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../bloc/favorites_bloc/favorite_bloc.dart';
+import '../bloc/favorites_bloc/favorite_event.dart';
+import '../ui/tab_box/all_product_page/product_page.dart';
 
 
 
 class GlobalLikeButton extends StatefulWidget {
-  const GlobalLikeButton({Key? key}) : super(key: key);
+  const GlobalLikeButton({Key? key, required this.product}) : super(key: key);
+  final ProductModel product;
 
   @override
   State<GlobalLikeButton> createState() => _GlobalLikeButtonState();
 }
 
-class _GlobalLikeButtonState extends State<GlobalLikeButton> {
+class _GlobalLikeButtonState extends State<GlobalLikeButton>{
+ ProductRepository productRepository = ProductRepository();
+
   @override
   Widget build(BuildContext context) {
     return LikeButton(
@@ -27,12 +36,17 @@ class _GlobalLikeButtonState extends State<GlobalLikeButton> {
         return Icon(
           Icons.favorite,
           color: isLiked
-              ? Colors.deepPurpleAccent
+              ? Colors.teal
               : Colors.grey,
           size: 30,
         );
       },
       onTap: (selected) async {
+        print("ontapga kirdi");
+        ProductsPage.product = widget.product;
+        print("ontapga ${widget.product}");
+        print("ontapga ${ProductsPage.product}");
+        BlocProvider.of<FavoritesBloc>(context).add(AddToFavoritesEvent(widget.product));
         Fluttertoast.showToast(
           msg: "Favoritlarga qo'shildi",
           toastLength: Toast.LENGTH_LONG,
@@ -48,5 +62,7 @@ class _GlobalLikeButtonState extends State<GlobalLikeButton> {
         return !selected;
       },
     );
+
   }
 }
+
