@@ -39,7 +39,7 @@ class _BasketPageState extends State<BasketPage> {
         _init();
       });},child:const Icon(Icons.refresh,color: Colors.yellow),),
       appBar: AppBar(title: const Text("basket page")),
-      body:items.isEmpty?Center(child: Text("basket isEmpty"),) :ListView.builder(
+      body:items.isEmpty? const Center(child: Text("basket isEmpty"),) :ListView.builder(
         itemCount: items.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(

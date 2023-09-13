@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 
@@ -28,9 +29,9 @@ class ShimmerProductScreen extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     return Container(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(8.w),
                         margin: EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 10),
+                            horizontal: 10.w, vertical: 10.h),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15),
@@ -43,10 +44,8 @@ class ShimmerProductScreen extends StatelessWidget {
                                 offset: const Offset(3, 3),
                               )
                             ]),
-                        child: Column(
-                          children: [
-                          ],
-                        ));
+                        child:const SizedBox(),
+                        );
                   },
                 ),
               ),

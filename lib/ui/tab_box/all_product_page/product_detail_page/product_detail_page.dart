@@ -36,6 +36,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        leading: IconButton(onPressed: (){Navigator.pop(context);},icon:const Icon(Icons.arrow_back_rounded,color: AppColors.black),),
         title: Text("Product Details Page",
             style: TextStyle(fontSize: 18.sp, color: AppColors.black)),
         centerTitle: true,

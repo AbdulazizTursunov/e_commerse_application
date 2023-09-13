@@ -17,7 +17,7 @@ class AppTheme {
       systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
     ),
     /// --------------------------icon theme ------------------------------------//
-    iconTheme: IconThemeData(color: Colors.grey),
+    iconTheme: const IconThemeData(color: Colors.grey),
 
     /// --------------------------- text theme ----------------------------------//
     textTheme: TextTheme(
@@ -131,7 +131,7 @@ class AppTheme {
     popupMenuTheme: PopupMenuThemeData(
         color: Colors.white,
         textStyle: TextStyle(color: Colors.black, fontSize: 12.sp)),
-    iconTheme: IconThemeData(color: Colors.grey),
+    iconTheme: const IconThemeData(color: Colors.grey),
 
     /// --------------------------- text theme ----------------------------------//
     textTheme: TextTheme(

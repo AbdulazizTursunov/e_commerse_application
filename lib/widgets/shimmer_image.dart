@@ -162,7 +162,7 @@ class ShimmerImage extends StatelessWidget {
           child:Container(
               width: width.w,
               height: height.h,
-              padding: EdgeInsets.all(8),
+              padding:const EdgeInsets.all(8),
               margin: EdgeInsets.symmetric(
                   horizontal: 10.w, vertical: 10.h),
               decoration: BoxDecoration(

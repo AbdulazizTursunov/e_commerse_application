@@ -44,7 +44,6 @@ class ProductService {
       final response = await dio.get('https://fakestoreapi.com/products/');
 
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
-        print(response.data);
         return UniversalResponse(
             data: ((response.data) as List<dynamic>?)
                 ?.map((e) => ProductModel.fromJson(e))

@@ -2,7 +2,6 @@ import 'package:e_commerse_application/ui/tab_box/all_product_page/product_page.
 import 'package:e_commerse_application/ui/tab_box/backet_page/basket_page.dart';
 import 'package:e_commerse_application/ui/tab_box/favorites_page/favorites_page.dart';
 import 'package:flutter/material.dart';
-import '../../utils/app_colors.dart';
 
 class TabBox extends StatefulWidget {
   const TabBox({super.key});
@@ -19,7 +18,7 @@ class _TabBoxState extends State<TabBox> {
   @override
   void initState() {
     screens.add(const ProductsPage());
-    screens.add( FavoritesPage());
+    screens.add(const FavoritesPage());
     screens.add(const BasketPage());
     super.initState();
   }
@@ -33,7 +32,7 @@ class _TabBoxState extends State<TabBox> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: IndexedStack(children: screens, index: currentTabIndex),
+        body: IndexedStack(index: currentTabIndex, children: screens),
         bottomNavigationBar: ClipRRect(
           borderRadius: const BorderRadius.only(
             topRight: Radius.circular(24),
