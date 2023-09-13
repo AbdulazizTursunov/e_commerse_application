@@ -1,6 +1,5 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
 import '../model/product_model/product_model.dart';
 import 'local_db_model.dart';
 
