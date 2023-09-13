@@ -19,7 +19,6 @@ class GlobalLikeButton extends StatefulWidget {
 }
 
 class _GlobalLikeButtonState extends State<GlobalLikeButton>{
- ProductRepository productRepository = ProductRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +41,11 @@ class _GlobalLikeButtonState extends State<GlobalLikeButton>{
         );
       },
       onTap: (selected) async {
-        print("ontapga kirdi");
-        ProductsPage.product = widget.product;
-        print("ontapga ${widget.product}");
-        print("ontapga ${ProductsPage.product}");
-        BlocProvider.of<FavoritesBloc>(context).add(AddToFavoritesEvent(widget.product));
+        context.read<FavoritesBloc>().add(
+          AddToFavoritesEvent(
+            widget.product,
+          ),
+        );
         Fluttertoast.showToast(
           msg: "Favoritlarga qo'shildi",
           toastLength: Toast.LENGTH_LONG,
@@ -54,12 +53,8 @@ class _GlobalLikeButtonState extends State<GlobalLikeButton>{
           backgroundColor: Colors.black,
           textColor: Colors.white,
         );
+        context.read<FavoritesBloc>().add(GetFavoritesEvent());
 
-        setState(() {
-          selected != selected;
-        });
-        selected ? true : false;
-        return !selected;
       },
     );
 

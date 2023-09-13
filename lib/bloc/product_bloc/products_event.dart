@@ -1,7 +1,7 @@
 
 
 
- class ProductsEvent  {
+class ProductsEvent  {
   get id => null;
 }
 

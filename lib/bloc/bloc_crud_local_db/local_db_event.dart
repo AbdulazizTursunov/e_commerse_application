@@ -7,7 +7,7 @@ import 'package:e_commerse_application/data/local_db/local_sql.dart';
 import 'package:e_commerse_application/data/local_db/local_db_model.dart';
 import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 
-// Eventlar
+
 abstract class CartEvent extends Equatable {
   const CartEvent();
 
@@ -18,7 +18,7 @@ abstract class CartEvent extends Equatable {
 class AddToCartEvent extends CartEvent {
   final ProductModel product;
 
- const AddToCartEvent(this.product);
+  const AddToCartEvent(this.product);
 
   @override
   List<Object?> get props => [product];

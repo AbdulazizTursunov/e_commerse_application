@@ -81,7 +81,7 @@ class _ProductsPageState extends State<ProductsPage> {
 
                                     placeholder: (context, url) =>
                                          ShimmerImage(
-                                            height: 220, width: 200),
+                                            height: 220.h, width: 200.w),
                                     errorWidget: (context, url, error) =>
                                         const Icon(
                                             Icons.picture_in_picture_alt),

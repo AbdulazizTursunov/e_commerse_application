@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/bloc_crud_local_db/local_db_bloc.dart';
 import '../bloc/bloc_crud_local_db/local_db_event.dart';
-import '../data/local_db/local_sql.dart';
 import '../data/model/product_model/product_model.dart';
 import '../service/api_repository/db_repositories.dart';
 
@@ -28,9 +27,7 @@ class _BasketButtonState extends State<BasketButton> {
           style: const ButtonStyle(
               backgroundColor: MaterialStatePropertyAll(Colors.teal)),
           onPressed: () {
-            BlocProvider.of<CartBloc>(context).add(AddToCartEvent(widget.productModel));
-            productRepository.insertProduct(widget.productModel);
-          },
+            context.read<CartBloc>().add(AddToCartEvent(widget.productModel));          },
           child: const Text("Add to Cart")),
     );
   }

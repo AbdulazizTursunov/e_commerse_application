@@ -14,10 +14,7 @@ import 'bloc/product_bloc/products_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(MainApp(
-
-  ));
+  runApp(const MainApp());
 }
 
 
@@ -34,7 +31,7 @@ class MainApp extends StatelessWidget {
         return BlocProvider(
           create: (context) => CartBloc(),
           child: BlocProvider(
-            create: (context) => FavoritesBloc( productRepository: ProductRepository()),
+            create: (context) => FavoritesBloc(),
             child: BlocProvider(
               create: (context) => ProductsBloc(ProductsService()),
               child:const MaterialApp(
