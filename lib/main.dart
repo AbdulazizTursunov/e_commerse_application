@@ -1,6 +1,6 @@
-import 'package:e_commerse_application/service/api_repository/repository.dart';
-import 'package:e_commerse_application/ui/route/routes.dart';
-import 'package:e_commerse_application/ui/tab_box/tab_box_page.dart';
+import 'package:e_commerce_application/service/api_repository/repository.dart';
+import 'package:e_commerce_application/ui/route/route_names.dart';
+import 'package:e_commerce_application/ui/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,9 +31,9 @@ class MainApp extends StatelessWidget {
             child: BlocProvider(
               create: (context) => ProductsBloc(ProductsService()),
               child: const MaterialApp(
+          initialRoute: RouteNames.splashPage,
                 onGenerateRoute: AppRoutes.generateRoute,
                 debugShowCheckedModeBanner: false,
-                home: TabBox(),
               ),
             ),
           ),

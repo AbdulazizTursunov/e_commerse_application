@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
+
+import '../../data/model/product_model/product_model.dart';
 
 
 

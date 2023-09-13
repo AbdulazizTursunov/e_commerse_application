@@ -1,7 +1,8 @@
-import 'package:e_commerse_application/ui/tab_box/all_product_page/product_page.dart';
-import 'package:e_commerse_application/ui/tab_box/backet_page/basket_page.dart';
-import 'package:e_commerse_application/ui/tab_box/favorites_page/favorites_page.dart';
 import 'package:flutter/material.dart';
+
+import 'all_product_page/product_page.dart';
+import 'backet_page/basket_page.dart';
+import 'favorites_page/favorites_page.dart';
 
 class TabBox extends StatefulWidget {
   const TabBox({super.key});

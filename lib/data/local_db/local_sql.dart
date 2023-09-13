@@ -1,7 +1,7 @@
-import 'package:e_commerse_application/data/local_db/local_db_model.dart';
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import '../model/product_model/product_model.dart';
+import 'local_db_model.dart';
 
 class LocalDatabase {
   static final LocalDatabase instance = LocalDatabase._init();
