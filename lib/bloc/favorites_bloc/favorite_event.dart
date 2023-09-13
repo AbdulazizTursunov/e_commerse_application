@@ -1,6 +1,4 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:e_commerse_application/data/local_db/local_db_model.dart';
 import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 
 // Eventlar

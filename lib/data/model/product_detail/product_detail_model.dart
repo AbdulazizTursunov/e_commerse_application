@@ -26,11 +26,11 @@ class ProductDetailsModel {
     category = json['category'];
     image = json['image'];
     rating =
-        json['rating'] != null ? new Rating.fromJson(json['rating']) : null;
+        json['rating'] != null ?  Rating.fromJson(json['rating']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['id'] = id;
     data['title'] = title;
     data['price'] = price;

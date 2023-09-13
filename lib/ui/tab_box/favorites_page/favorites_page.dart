@@ -39,10 +39,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
       body: BlocBuilder<FavoritesBloc, FavoritesState>(
         builder: (context, state) {
           if (state is FavoritesLoadingState) {
-            print("FavoritesLoadingState favorit pageda kirdi");
             return const Center(child: CircularProgressIndicator());
           } else if (state is FavoritesLoadedState) {
-            print("FavoritesLoadedState favorit pageda kirdi");
             List<ProductModel> favorites = state.favorites;
             if (favorites.isEmpty) {
               return const Center(child: Text('Favorites is empty'));

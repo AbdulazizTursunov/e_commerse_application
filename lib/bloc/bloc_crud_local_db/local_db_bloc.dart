@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerse_application/data/local_db/local_sql.dart';
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 import 'local_db_event.dart';
 import 'local_db_state.dart';
 

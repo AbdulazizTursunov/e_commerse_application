@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/local_db/local_sql.dart';
 import 'favorite_event.dart';
 import 'favorite_state.dart';
@@ -30,7 +30,6 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     emit(FavoritesLoadingState());
 
     var favorites = await LocalDatabase().getAllFavorites();
-    print("Getting favorites");
 
     emit(FavoritesLoadedState(favorites));
   }

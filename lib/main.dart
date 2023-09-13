@@ -1,6 +1,4 @@
-import 'package:e_commerse_application/service/api_repository/db_repositories.dart';
 import 'package:e_commerse_application/service/api_repository/repository.dart';
-import 'package:e_commerse_application/service/api_service/api_service.dart';
 import 'package:e_commerse_application/ui/route/routes.dart';
 import 'package:e_commerse_application/ui/tab_box/tab_box_page.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +9,10 @@ import 'bloc/bloc_crud_local_db/local_db_bloc.dart';
 import 'bloc/favorites_bloc/favorite_bloc.dart';
 import 'bloc/product_bloc/products_bloc.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
-
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -34,7 +30,7 @@ class MainApp extends StatelessWidget {
             create: (context) => FavoritesBloc(),
             child: BlocProvider(
               create: (context) => ProductsBloc(ProductsService()),
-              child:const MaterialApp(
+              child: const MaterialApp(
                 onGenerateRoute: AppRoutes.generateRoute,
                 debugShowCheckedModeBanner: false,
                 home: TabBox(),

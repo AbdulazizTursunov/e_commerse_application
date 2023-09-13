@@ -64,7 +64,8 @@ class LocalDatabase {
     );
   ''');
   }
-/// =========================== product ==========================///
+
+  /// =========================== product ==========================///
   Future<ProductModel> insertProduct(ProductModel product) async {
     final db = await instance.database;
     final int id =
@@ -73,10 +74,12 @@ class LocalDatabase {
         product.rating.toJson()..addAll({"id": product.id}));
     return product.copyWith(id: id);
   }
+
   Future<List<ProductModel>> getAllProducts() async {
     List<ProductModel> allProduct = [];
     final db = await instance.database;
-    allProduct = (await db.query(LocalDbFields.productTable)).map((e) => ProductModel.fromJson(e))
+    allProduct = (await db.query(LocalDbFields.productTable))
+        .map((e) => ProductModel.fromJson(e))
         .toList();
     return allProduct;
   }
@@ -89,17 +92,20 @@ class LocalDatabase {
       whereArgs: [id],
     );
   }
- ///======================= favorites ========================///
+
+  ///======================= favorites ========================///
   Future<ProductModel> insertFavorite(ProductModel product) async {
     final db = await instance.database;
-    final int id = await db.insert(LocalDbFields.favoriteTable, product.toJson());
+    final int id =
+        await db.insert(LocalDbFields.favoriteTable, product.toJson());
     return product.copyWith(id: id);
   }
 
   Future<List<ProductModel>> getAllFavorites() async {
     List<ProductModel> allProduct = [];
     final db = await instance.database;
-    allProduct = (await db.query(LocalDbFields.favoriteTable)).map((e) => ProductModel.fromJson(e))
+    allProduct = (await db.query(LocalDbFields.favoriteTable))
+        .map((e) => ProductModel.fromJson(e))
         .toList();
     return allProduct;
   }
@@ -112,8 +118,4 @@ class LocalDatabase {
       whereArgs: [id],
     );
   }
-
-
-
-
 }

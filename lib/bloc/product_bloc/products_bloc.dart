@@ -5,7 +5,6 @@ import 'package:e_commerse_application/data/model/product_detail/product_detail_
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/model/product_model/product_model.dart';
 import '../../service/api_repository/repository.dart';
-import 'package:bloc/bloc.dart';
 import 'products_state.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {

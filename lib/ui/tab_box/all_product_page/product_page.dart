@@ -6,7 +6,6 @@ import 'package:e_commerse_application/widgets/basket_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:like_button/like_button.dart';
 import '../../../bloc/product_bloc/products_bloc.dart';
 import '../../../bloc/product_bloc/products_event.dart';
 import '../../../bloc/product_bloc/products_state.dart';
@@ -19,7 +18,8 @@ import '../../ui_utils/custom_circular.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({Key? key}) : super(key: key);
-static ProductModel? product;
+  static ProductModel? product;
+
   @override
   State<ProductsPage> createState() => _ProductsPageState();
 }
@@ -37,11 +37,13 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( title: Text("Product  Page",
-          style: TextStyle(fontSize: 18.sp, color: AppColors.black)),
+      appBar: AppBar(
+        title: Text("Product  Page",
+            style: TextStyle(fontSize: 18.sp, color: AppColors.black)),
         centerTitle: true,
         backgroundColor: AppColors.white,
-        elevation: 0,),
+        elevation: 0,
+      ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         bloc: bloc,
         builder: (context, state) {
@@ -66,29 +68,26 @@ class _ProductsPageState extends State<ProductsPage> {
                     },
                     child: Container(
                       clipBehavior: Clip.antiAlias,
-                      padding: const EdgeInsets.all( 3),
+                      padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
-                          border: Border.all(color: AppColors.cE8EDE6,width: 2.3),
+                          border:
+                              Border.all(color: AppColors.cE8EDE6, width: 2.3),
                           color: AppColors.white),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child:
-                                Center(
-                                  child: CachedNetworkImage(
-
-                                    placeholder: (context, url) =>
-                                         ShimmerImage(
-                                            height: 220.h, width: 200.w),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(
-                                            Icons.picture_in_picture_alt),
-                                    imageUrl: productModel.image,
-                                    fit: BoxFit.cover,
-                                  ),
+                              child: Center(
+                                child: CachedNetworkImage(
+                                  placeholder: (context, url) =>
+                                      ShimmerImage(height: 220.h, width: 200.w),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.picture_in_picture_alt),
+                                  imageUrl: productModel.image,
+                                  fit: BoxFit.cover,
                                 ),
+                              ),
                             ),
                             10.ph,
                             Text(
@@ -111,9 +110,11 @@ class _ProductsPageState extends State<ProductsPage> {
                                 children: [
                                   Text(
                                     "price: ${productModel.price.toString()}\$",
-                                    style: Theme.of(context).textTheme.titleSmall,
-                                  ),20.pw,
-                                  GlobalLikeButton(product:productModel)
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                  20.pw,
+                                  GlobalLikeButton(product: productModel)
                                 ],
                               ),
                             ),
