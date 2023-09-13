@@ -1,19 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
-import 'package:e_commerse_application/ui/route/route_names.dart';
-import 'package:e_commerse_application/utils/sizebox_extension_for_utils.dart';
-import 'package:e_commerse_application/widgets/basket_button.dart';
+import 'package:e_commerce_application/utils/sizebox_extension_for_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../bloc/product_bloc/products_bloc.dart';
 import '../../../bloc/product_bloc/products_event.dart';
 import '../../../bloc/product_bloc/products_state.dart';
+import '../../../data/model/product_model/product_model.dart';
 import '../../../service/api_repository/repository.dart';
 import '../../../utils/app_colors.dart';
+import '../../../widgets/basket_button.dart';
 import '../../../widgets/global_like_button.dart';
 import '../../../widgets/shimmer_image.dart';
 import '../../../widgets/shimmer_product.dart';
+import '../../route/route_names.dart';
 import '../../ui_utils/custom_circular.dart';
 
 class ProductsPage extends StatefulWidget {

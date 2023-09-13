@@ -1,5 +1,5 @@
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 import '../../data/local_db/local_sql.dart';
+import '../../data/model/product_model/product_model.dart';
 
 class ProductRepository {
   final LocalDatabase _localDatabase = LocalDatabase();

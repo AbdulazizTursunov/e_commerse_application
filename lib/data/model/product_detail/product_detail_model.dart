@@ -1,4 +1,5 @@
-import 'package:e_commerse_application/data/model/rating.dart';
+
+import '../rating.dart';
 
 class ProductDetailsModel {
   int? id;

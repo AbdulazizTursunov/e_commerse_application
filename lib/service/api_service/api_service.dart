@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
-import 'package:e_commerse_application/data/universal_response.dart';
 import 'package:flutter/cupertino.dart';
+import '../../data/model/product_model/product_model.dart';
+import '../../data/universal_response.dart';
 import '../../utils/constant/constant_filds.dart';
 
 class ProductService {

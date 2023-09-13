@@ -1,10 +1,10 @@
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:like_button/like_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../bloc/favorites_bloc/favorite_bloc.dart';
 import '../bloc/favorites_bloc/favorite_event.dart';
+import '../data/model/product_model/product_model.dart';
 
 class GlobalLikeButton extends StatefulWidget {
   const GlobalLikeButton({Key? key, required this.product}) : super(key: key);

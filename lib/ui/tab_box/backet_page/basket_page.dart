@@ -1,7 +1,7 @@
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
-import 'package:e_commerse_application/service/api_repository/db_repositories.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/model/product_model/product_model.dart';
+import '../../../service/api_repository/db_repositories.dart';
 import '../../../utils/app_colors.dart';
 
 class BasketPage extends StatefulWidget {

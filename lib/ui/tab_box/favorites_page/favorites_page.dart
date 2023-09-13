@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerse_application/service/api_repository/db_repositories.dart';
-import 'package:e_commerse_application/utils/sizebox_extension_for_utils.dart';
+import 'package:e_commerce_application/utils/sizebox_extension_for_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:e_commerse_application/data/model/product_model/product_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../bloc/favorites_bloc/favorite_bloc.dart';
 import '../../../bloc/favorites_bloc/favorite_event.dart';
 import '../../../bloc/favorites_bloc/favorite_state.dart';
+import '../../../data/model/product_model/product_model.dart';
+import '../../../service/api_repository/db_repositories.dart';
 import '../../../utils/app_colors.dart';
 import '../../../widgets/basket_button.dart';
 import '../../../widgets/shimmer_image.dart';
